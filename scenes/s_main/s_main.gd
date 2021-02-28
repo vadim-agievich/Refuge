@@ -7,6 +7,8 @@ extends Spatial
 var player = null
 
 ##################################################
+func sub(s):
+	var n 
 
 func _ready():
 	OS.center_window()

@@ -5,7 +5,7 @@ extends Spatial
 #   Change mouse mode by clicking 'Shift + F1'   #
 #------------------------------------------------#
 var player = null
-
+var x = 2
 
 ##################################################
 

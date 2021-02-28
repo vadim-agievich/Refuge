@@ -8,7 +8,7 @@ var player = null
 
 ##################################################
 func sub(s):
-	var n 
+	var n = 2
 
 func _ready():
 	OS.center_window()

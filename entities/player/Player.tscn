@@ -1,0 +1,114 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://entities/player/player_controller.gd" type="Script" id=1]
+[ext_resource path="res://entities/player/SpotLight.gd" type="Script" id=2]
+[ext_resource path="res://cel_0.png" type="Texture" id=3]
+[ext_resource path="res://project_0.png" type="Texture" id=4]
+[ext_resource path="res://project_1.png" type="Texture" id=5]
+[ext_resource path="res://entities/playerдыхание.tres" type="Animation" id=6]
+
+[sub_resource type="CapsuleShape" id=1]
+radius = 0.529581
+height = 1.36283
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.262745, 0.239216, 0.239216, 1 )
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0.745098, 0.231373, 0.231373, 1 )
+
+[sub_resource type="DynamicFont" id=4]
+
+[node name="Player" type="KinematicBody" groups=[
+"Player",
+]]
+collision_layer = 2
+collision_mask = 3
+script = ExtResource( 1 )
+head_path = NodePath("Head")
+cam_path = NodePath("Head/Camera")
+
+[node name="Collision" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.00225633, -0.00233549, -0.00490698 )
+shape = SubResource( 1 )
+
+[node name="Head" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.00939, 0 )
+
+[node name="Camera" type="Camera" parent="Head"]
+keep_aspect = 0
+fov = 98.3251
+far = 250.0
+
+[node name="SpotLight" type="SpotLight" parent="Head"]
+light_color = Color( 0.823529, 0.768627, 0.768627, 1 )
+light_energy = 0.0
+spot_range = 11.4485
+spot_angle = 20.2902
+script = ExtResource( 2 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+"anims/дыхание" = ExtResource( 6 )
+
+[node name="ui" type="Node" parent="."]
+
+[node name="Label" type="Label" parent="ui"]
+anchor_bottom = 1.0
+margin_left = 223.0
+margin_top = 531.0
+margin_right = 758.0
+margin_bottom = -30.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "message / subject / action"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="ui"]
+margin_left = 151.0
+margin_top = 11.0
+margin_right = 827.0
+margin_bottom = 52.0
+custom_styles/panel = SubResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ProgressBar" type="ProgressBar" parent="ui"]
+margin_left = 197.0
+margin_top = 19.0
+margin_right = 697.0
+margin_bottom = 45.0
+custom_styles/fg = SubResource( 3 )
+custom_fonts/font = SubResource( 4 )
+value = 48.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="ui"]
+margin_left = 741.0
+margin_top = 21.0
+margin_right = 772.0
+margin_bottom = 43.0
+text = "23"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="project_0" type="Sprite" parent="."]
+position = Vector2( 172.05, 32.0501 )
+scale = Vector2( 2.73744, 2.29937 )
+texture = ExtResource( 4 )
+
+[node name="cel_0" type="Sprite" parent="."]
+position = Vector2( 500, 300 )
+scale = Vector2( 6.28307, 5.84901 )
+texture = ExtResource( 3 )
+
+[node name="project_1" type="Sprite" parent="."]
+position = Vector2( 790.802, 32.4224 )
+scale = Vector2( 2.62047, 2.3559 )
+texture = ExtResource( 5 )
